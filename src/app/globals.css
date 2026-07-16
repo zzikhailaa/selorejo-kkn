@@ -24,3 +24,97 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.hero-carousel .hero-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-carousel .hero-viewport {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-carousel .hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 700ms ease;
+}
+
+.hero-carousel .hero-image {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.hero-carousel .hero-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 30;
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.hero-carousel .hero-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hero-carousel .hero-arrow-left {
+  left: 1rem;
+}
+
+.hero-carousel .hero-arrow-right {
+  right: 1rem;
+}
+
+.hero-carousel .hero-dot {
+  display: block;
+  height: 0.625rem;
+  width: 0.625rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: width 300ms ease, background-color 300ms ease;
+}
+
+.hero-carousel .hero-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+#hero-slide-0:checked ~ .hero-viewport .hero-slide-0,
+#hero-slide-1:checked ~ .hero-viewport .hero-slide-1,
+#hero-slide-2:checked ~ .hero-viewport .hero-slide-2,
+#hero-slide-3:checked ~ .hero-viewport .hero-slide-3 {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#hero-slide-0:checked ~ .hero-viewport .hero-slide-0 .hero-arrow,
+#hero-slide-1:checked ~ .hero-viewport .hero-slide-1 .hero-arrow,
+#hero-slide-2:checked ~ .hero-viewport .hero-slide-2 .hero-arrow,
+#hero-slide-3:checked ~ .hero-viewport .hero-slide-3 .hero-arrow {
+  pointer-events: auto;
+}
+
+#hero-slide-0:checked ~ .absolute.bottom-6 .hero-dot:nth-child(1),
+#hero-slide-1:checked ~ .absolute.bottom-6 .hero-dot:nth-child(2),
+#hero-slide-2:checked ~ .absolute.bottom-6 .hero-dot:nth-child(3),
+#hero-slide-3:checked ~ .absolute.bottom-6 .hero-dot:nth-child(4) {
+  width: 2rem;
+  background: #fff;
+}
