@@ -31,10 +31,10 @@ const slides = [
 
 export default function Home() {
   const adminStats = [
-    { value: '5.395 ', label: 'Penduduk' },
-    { value: '2.756 ', label: 'Laki-Laki' },
-    { value: '2.639 ', label: 'Perempuan' },
-    { value: '1.750', label: 'Kepala Keluarga' },
+    { value: ' ', label: 'Penduduk' },
+    { value: ' ', label: 'Laki-Laki' },
+    { value: ' ', label: 'Perempuan' },
+    { value: ' ', label: 'Kepala Keluarga' },
   ];
 
   return (
@@ -245,7 +245,7 @@ export default function Home() {
                 </div>
                 <div className="p-4">
                   <h4 className="font-semibold text-slate-900">Bagian {i}</h4>
-                  <p className="text-sm text-slate-500 mt-2">Jabatan / fungsi singkat.</p>
+                  <p className="text-sm text-slate-500 mt-2">Jabatan</p>
                 </div>
               </div>
             ))}

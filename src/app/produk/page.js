@@ -12,19 +12,17 @@ const sampleProducts = [
   },
   {
     id: 2,
-    name: 'Kopi Arabika Selorejo',
-    desc: 'Biji kopi pilihan dari lereng perbukitan Selorejo, aroma khas dan rasa otentik.',
+    name: 'Kacang Tanah Panggang',
+    desc: 'Kacang tanah panggang hasil olahan warga Selorejo, gurih dan lezat.',
     wa: 'https://wa.me/6281987654321',
-    ig: 'https://www.instagram.com/kopi_selorejo/',
-    yt: 'https://www.youtube.com/@kopiselorejo',
   },
   {
     id: 3,
     name: 'Jay Sangkar',
     desc: 'Sangkar burung kayu alami hasil karya tangan warga Mojodadi.',
     wa: 'https://wa.me/6281987654321',
-    ig: 'https://www.instagram.com/jaysangkar/',
-    yt: 'https://www.youtube.com/@jaysangkar',
+    ig: '',
+    yt: '',
   },
 ];
 

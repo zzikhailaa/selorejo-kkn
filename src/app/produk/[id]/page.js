@@ -4,8 +4,9 @@ import React, { use } from 'react';
 import { Phone, MessageCircle } from 'lucide-react'; // Import ikon
 
 const sampleProducts = [
-  { id: 1, name: '', price: 'Rp 15.000', category: 'Makanan', desc: 'Keripik singkong asli hasil olahan ibu-ibu PKK Selorejo.', wa: 'https://wa.me/6281234567890', image: 'https://via.placeholder.com/400' },
-  { id: 2, name: 'Kopi Arabika Selorejo', price: 'Rp 25.000', category: 'Minuman', desc: 'Biji kopi pilihan dari lereng perbukitan Selorejo.', wa: 'https://wa.me/6281987654321', image: 'https://via.placeholder.com/400' },
+  { id: 1, name: 'Anyaman Tas Selorejo', price: 'Rp 15.000', category: 'Makanan', desc: 'Tas anyaman alami hasil karya tangan warga Selorejo.', wa: 'https://wa.me/6281234567890', image: 'https://via.placeholder.com/400' },
+  { id: 2, name: 'Kacang Tanah Panggang', price: 'Rp 25.000', category: 'Minuman', desc: 'Kacang tanah panggang hasil olahan warga Selorejo, gurih dan lezat.', wa: 'https://wa.me/6281987654321', image: 'https://via.placeholder.com/400' },
+  { id: 3, name: 'Jay Sangkar', price: 'Rp 150.000 - 1.000.000', category: 'Kerajinan', desc: 'Sangkar burung kayu alami hasil karya tangan warga Mojodadi.', wa: 'https://wa.me/6281987654321', image: 'https://via.placeholder.com/400' },
 ];
 
 export default function DetailProduk({ params }) {

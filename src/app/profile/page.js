@@ -151,8 +151,8 @@ export default async function ProfilePage() {
               </div>
               
               <div className="mt-8 grid gap-4">
-                <InfoCard icon={Users} label="Total Penduduk" value="5.395 Jiwa" />
-                <InfoCard icon={Ruler} label="Luas Wilayah" value="2,09 km² (209 Ha)" />
+                <InfoCard icon={Users} label="Total Penduduk" value=" Jiwa" />
+                <InfoCard icon={Ruler} label="Luas Wilayah" value=" km² (209 Ha)" />
               </div>
             </div>
 
