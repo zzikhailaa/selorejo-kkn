@@ -286,10 +286,13 @@ export default function Home() {
 
         {/* Tombol Lihat Selengkapnya */}
           <div className="mt-4 flex justify-end">
-            <button className="flex items-center gap-2 text-slate-900 font-semibold hover:text-slate-700 transition">
+            <Link 
+              href="/berita" 
+              className="flex items-center gap-2 text-slate-900 font-semibold hover:text-emerald-700 transition"
+            >
               <FileText className="w-5 h-5" />
               Lihat Berita Lebih Lengkap
-            </button>
+            </Link>
           </div>
       </section>
 
@@ -345,10 +348,13 @@ export default function Home() {
 
         {/* Tombol Lihat Selengkapnya */}
           <div className="mt-4 flex justify-end">
-            <button className="flex items-center gap-2 text-slate-900 font-semibold hover:text-slate-700 transition">
+            <Link 
+              href="/produk" 
+              className="flex items-center gap-2 text-slate-900 font-semibold hover:text-emerald-700 transition"
+            >
               <FileText className="w-5 h-5" />
               Lihat Produk Lebih Lengkap
-            </button>
+            </Link>
           </div>
       </section>
 
