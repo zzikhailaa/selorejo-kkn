@@ -3,10 +3,10 @@
 import { useState } from 'react';
 
 const populationStats = [
-  { label: 'Total Penduduk', value: '1.890', unit: 'Jiwa', tone: 'text-emerald-500' },
-  { label: 'Kepala Keluarga', value: '436', unit: 'Jiwa', tone: 'text-emerald-500' },
-  { label: 'Perempuan', value: '960', unit: 'Jiwa', tone: 'text-emerald-500' },
-  { label: 'Laki-Laki', value: '930', unit: 'Jiwa', tone: 'text-emerald-500' },
+  { label: 'Total Penduduk', value: '0', unit: 'Jiwa', tone: 'text-emerald-500' },
+  { label: 'Kepala Keluarga', value: '0', unit: 'Jiwa', tone: 'text-emerald-500' },
+  { label: 'Perempuan', value: '0', unit: 'Jiwa', tone: 'text-emerald-500' },
+  { label: 'Laki-Laki', value: '0', unit: 'Jiwa', tone: 'text-emerald-500' },
 ];
 
 const dusunData = [
@@ -245,24 +245,6 @@ export default function InfografisPage() {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="rounded-[1.75rem] bg-white p-8 shadow-[0_1px_6px_rgba(15,23,42,0.08)]">
-            <SectionTitle title="Ringkasan Dusun" />
-            <div className="mt-8 space-y-5">
-              {dusunData.map((item) => (
-                <div key={item.name} className="rounded-2xl bg-slate-50 p-4">
-                  <div className="flex items-center justify-between text-sm font-semibold text-slate-700">
-                    <span>{item.name}</span>
-                    <span>{formatPercent(item.value, totalDusun)}%</span>
-                  </div>
-                  <div className="mt-3 h-3 rounded-full bg-slate-200 overflow-hidden">
-                    <div className="h-full rounded-full" style={{ width: `${(item.value / totalDusun) * 100}%`, backgroundColor: item.color }} />
-                  </div>
-                  <div className="mt-2 text-sm text-slate-500">{item.value} jiwa</div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
