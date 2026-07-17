@@ -4,7 +4,7 @@ import React, { use } from 'react';
 import { Phone, MessageCircle } from 'lucide-react'; // Import ikon
 
 const sampleProducts = [
-  { id: 1, name: 'Keripik Singkong Renyah', price: 'Rp 15.000', category: 'Makanan', desc: 'Keripik singkong asli hasil olahan ibu-ibu PKK Selorejo.', wa: 'https://wa.me/6281234567890', image: 'https://via.placeholder.com/400' },
+  { id: 1, name: '', price: 'Rp 15.000', category: 'Makanan', desc: 'Keripik singkong asli hasil olahan ibu-ibu PKK Selorejo.', wa: 'https://wa.me/6281234567890', image: 'https://via.placeholder.com/400' },
   { id: 2, name: 'Kopi Arabika Selorejo', price: 'Rp 25.000', category: 'Minuman', desc: 'Biji kopi pilihan dari lereng perbukitan Selorejo.', wa: 'https://wa.me/6281987654321', image: 'https://via.placeholder.com/400' },
 ];
 

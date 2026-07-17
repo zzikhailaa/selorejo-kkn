@@ -6,8 +6,8 @@ import { ShoppingBag, Phone, ExternalLink } from 'lucide-react';
 const sampleProducts = [
   {
     id: 1,
-    name: 'Keripik Singkong Renyah',
-    desc: 'Keripik singkong asli hasil olahan ibu-ibu PKK Selorejo, renyah dan berempah.',
+    name: 'Anyaman Tas Selorejo',
+    desc: 'Tas anyaman alami hasil karya tangan warga Selorejo.',
     wa: 'https://wa.me/6281234567890',
   },
   {
@@ -15,6 +15,16 @@ const sampleProducts = [
     name: 'Kopi Arabika Selorejo',
     desc: 'Biji kopi pilihan dari lereng perbukitan Selorejo, aroma khas dan rasa otentik.',
     wa: 'https://wa.me/6281987654321',
+    ig: 'https://www.instagram.com/kopi_selorejo/',
+    yt: 'https://www.youtube.com/@kopiselorejo',
+  },
+  {
+    id: 3,
+    name: 'Jay Sangkar',
+    desc: 'Sangkar burung kayu alami hasil karya tangan warga Mojodadi.',
+    wa: 'https://wa.me/6281987654321',
+    ig: 'https://www.instagram.com/jaysangkar/',
+    yt: 'https://www.youtube.com/@jaysangkar',
   },
 ];
 

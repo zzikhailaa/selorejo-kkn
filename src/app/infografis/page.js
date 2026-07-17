@@ -10,45 +10,41 @@ const populationStats = [
 ];
 
 const dusunData = [
-  { name: 'Tamang', value: 395, color: '#5470c6' },
-  { name: 'Lubang Landak', value: 548, color: '#91cc75' },
-  { name: 'Sengkabang', value: 477, color: '#fac858' },
-  { name: 'BAA', value: 283, color: '#ee6666' },
+  { name: 'Mojodadi', value: 0, color: '#5470c6' },
+  { name: 'Selorejo', value: 0, color: '#91cc75' },
+  { name: 'Ngepung', value: 0, color: '#fac858' },
+  { name: 'Melaten', value: 0, color: '#ee6666' },
 ];
 
 const marriageData = [
-  { label: 'Belum Kawin', value: 976 },
-  { label: 'Kawin', value: 874 },
-  { label: 'Cerai Mati', value: 36 },
+  { label: 'Belum Kawin', value: 0 },
+  { label: 'Kawin', value: 0 },
+  { label: 'Cerai Mati', value: 0 },
   { label: 'Cerai Hidup', value: 0 },
   { label: 'Kawin Tercatat', value: 0 },
-  { label: 'Kawin Tidak Tercatat', value: 0 },
 ];
 
 const religionData = [
-  { label: 'Islam', value: 988 },
-  { label: 'Katolik', value: 890 },
-  { label: 'Kristen', value: 7 },
-  { label: 'Kepercayaan lainnya', value: 1 },
+  { label: 'Islam', value: 0 },
+  { label: 'Katolik', value: 0 },
+  { label: 'Kristen', value: 0 },
   { label: 'Buddha', value: 0 },
   { label: 'Konghucu', value: 0 },
   { label: 'Hindu', value: 0 },
 ];
 
 const marriageBars = [
-  { label: 'Belum Kawin', value: 976, accent: 'bg-emerald-500', color: '#10b981' },
-  { label: 'Kawin', value: 874, accent: 'bg-lime-400', color: '#84cc16' },
-  { label: 'Cerai Mati', value: 36, accent: 'bg-green-300', color: '#86efac' },
+  { label: 'Belum Kawin', value: 0, accent: 'bg-emerald-500', color: '#10b981' },
+  { label: 'Kawin', value: 0, accent: 'bg-lime-400', color: '#84cc16' },
+  { label: 'Cerai Mati', value: 0, accent: 'bg-green-300', color: '#86efac' },
   { label: 'Cerai Hidup', value: 0, accent: 'bg-green-200', color: '#bbf7d0' },
   { label: 'Kawin Tercatat', value: 0, accent: 'bg-emerald-300', color: '#6ee7b7' },
-  { label: 'Kawin Tidak Tercatat', value: 0, accent: 'bg-teal-300', color: '#5eead4' },
 ];
 
 const religionBars = [
-  { label: 'Islam', value: 988, accent: 'bg-emerald-500', color: '#10b981' },
-  { label: 'Katolik', value: 890, accent: 'bg-lime-400', color: '#84cc16' },
-  { label: 'Kristen', value: 7, accent: 'bg-green-300', color: '#86efac' },
-  { label: 'Kepercayaan lainnya', value: 1, accent: 'bg-emerald-300', color: '#6ee7b7' },
+  { label: 'Islam', value: 0, accent: 'bg-emerald-500', color: '#10b981' },
+  { label: 'Katolik', value: 0, accent: 'bg-lime-400', color: '#84cc16' },
+  { label: 'Kristen', value: 0, accent: 'bg-green-300', color: '#86efac' },
   { label: 'Buddha', value: 0, accent: 'bg-teal-300', color: '#5eead4' },
   { label: 'Konghucu', value: 0, accent: 'bg-green-200', color: '#bbf7d0' },
   { label: 'Hindu', value: 0, accent: 'bg-emerald-200', color: '#a7f3d0' },
