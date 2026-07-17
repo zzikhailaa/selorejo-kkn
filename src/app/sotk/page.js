@@ -253,13 +253,10 @@ export default function Home() {
 
           {/* Tombol Lihat Selengkapnya */}
           <div className="mt-4 flex justify-end">
-            <Link 
-              href="/sotk" 
-              className="flex items-center gap-2 text-slate-900 font-semibold hover:text-emerald-700 transition"
-            >
+            <button className="flex items-center gap-2 text-slate-900 font-semibold hover:text-slate-700 transition">
               <FileText className="w-5 h-5" />
               Lihat SOTK Lebih Lengkap
-            </Link>
+            </button>
           </div>
         </div>
       </section>
