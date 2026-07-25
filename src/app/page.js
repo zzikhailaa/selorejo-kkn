@@ -50,20 +50,22 @@ export default function Page() {
               <img src={slide.image} alt={slide.title} className="hero-image" />
               
               {/* Lapisan Gelap / Overlay */}
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <div className="text-center px-4 max-w-3xl mx-auto">
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg mb-3 leading-tight">
-                    {slide.title}
-                  </h1>
-                  <p className="text-sm sm:text-base md:text-lg text-slate-100 drop-shadow-md mb-6 max-w-2xl mx-auto">
-                    {slide.desc}
-                  </p>
-                  {slide.buttonText && (
-                    <a href={slide.link} className="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition duration-300">
-                      {slide.buttonText}
-                    </a>
-                  )}
-                </div>
+              <div className="text-center px-4 max-w-3xl mx-auto">
+                {/* Hapus semua efek stroke, ganti pakai font bold bersih + drop-shadow tebal */}
+                <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] mb-3 leading-tight">
+                  {slide.title}
+                </h1>
+                
+                {/* Teks deskripsi di bawahnya */}
+                <p className="text-sm sm:text-base md:text-lg text-slate-100 font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] mb-6 max-w-2xl mx-auto">
+                  {slide.desc}
+                </p>
+
+                {slide.buttonText && (
+                  <a href={slide.link} className="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition duration-300">
+                    {slide.buttonText}
+                  </a>
+                )}
               </div>
             </div>
           ))}
