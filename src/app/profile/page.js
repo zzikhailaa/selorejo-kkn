@@ -3,11 +3,17 @@ import { Users, Ruler } from 'lucide-react';
 async function getProfile() {
   try {
     const res = await fetch('https://script.google.com/macros/s/AKfycbyHWyDemUVLgkDExoA3__K8bJLTop3fyL85xt9GABcFZGLZWG-u59reO5tiqvA0V886/exec', { cache: 'no-store' });
-    if (!res.ok) throw new Error('Gagal mengambil data');
-    return res.json();
+    
+    // Cek apakah response berupa JSON atau malah error HTML
+    const contentType = res.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error("Respon bukan JSON");
+    }
+
+    return await res.json();
   } catch (error) {
     console.error('Error:', error);
-    return null;
+    return { profile: { nama_desa: "Data Tidak Tersedia", visi: "", misi: "", sejarah: "" } };
   }
 }
 
@@ -23,23 +29,19 @@ const InfoCard = ({ icon: Icon, label, value }) => (
 
 export default async function ProfilePage() {
   const data = await getProfile();
-  const profile = data?.profile;
-
-  if (!profile) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-50 px-6 py-14">
-        <div className="rounded-[2rem] bg-white p-10 shadow-xl">
-          <p className="text-lg font-semibold text-slate-700 animate-pulse">Memuat data profil...</p>
-        </div>
-      </div>
-    );
-  }
+  const statUmum = data?.statistik_umum || {};
+  const profile = data?.profile || { 
+      nama_desa: "", 
+      visi: "", 
+      misi: "", 
+      sejarah: "" 
+  };
 
   const batasDesa = [
-    { arah: 'Utara', desa: 'Menganto' },
-    { arah: 'Selatan', desa: 'Karanglo' },
-    { arah: 'Timur', desa: 'Mojojejer' },
-    { arah: 'Barat', desa: 'Mojowangi' },
+    { arah: 'Utara', desa: 'SIDOKERTO' },
+    { arah: 'Selatan', desa: 'MOJOJEJER' },
+    { arah: 'Timur', desa: 'CATAKGAYAM' },
+    { arah: 'Barat', desa: 'MENGANTO' },
   ];
 
   return (
@@ -71,7 +73,7 @@ export default async function ProfilePage() {
         <div className="rounded-2xl bg-white p-8 shadow-md border border-slate-200">
           <h3 className="text-3xl font-bold text-emerald-700 text-center mb-6">Misi</h3>
           <div className="space-y-4">
-            {profile.misi.split('\n').filter(item => item.trim() !== '').map((misi, index) => (
+            {(profile.misi || "").split('\n').filter(item => item.trim() !== '').map((misi, index) => (
               <p key={index} className="text-slate-800 leading-relaxed text-lg font-medium">
                 {index + 1}. {misi.trim()}
               </p>
@@ -87,10 +89,17 @@ export default async function ProfilePage() {
                 <p className="text-sm uppercase tracking-[0.24em] text-slate-500">Bagan Desa</p>
                 <h2 className="mt-3 text-3xl font-bold text-slate-900">Struktur Organisasi Desa</h2>
               </div>
-              <div className="rounded-3xl bg-emerald-50 px-4 py-2 text-emerald-700 shadow-sm">Segera Hadir</div>
+              {/* Badge status bisa diubah atau dihapus kalau gambarnya sudah ada */}
+              <div className="rounded-3xl bg-emerald-50 px-4 py-2 text-emerald-700 shadow-sm font-medium">Resmi</div>
             </div>
-            <div className="mt-8 rounded-[2rem] bg-slate-50 p-8 border border-slate-200 h-[360px] flex items-center justify-center">
-              <p className="text-slate-500 font-medium text-center">Coming Soon: Bagan Struktur Pemerintahan Desa</p>
+            
+            {/* Container Gambar */}
+            <div className="mt-8 rounded-[2rem] bg-slate-50 p-6 border border-slate-200 overflow-hidden flex items-center justify-center">
+              <img 
+                src="/struktur-organisasi.png" 
+                alt="Struktur Organisasi Desa Selorejo" 
+                className="w-full h-auto max-h-[500px] object-contain rounded-xl shadow-md hover:scale-[1.01] transition duration-300"
+              />
             </div>
           </div>
 
@@ -116,9 +125,9 @@ export default async function ProfilePage() {
                 profile.sejarah.split('|||').map((bagian, index) => {
                   const [judul, ...isi] = bagian.split('###');
                   return (
-                    <div key={index}>
-                      {judul && <h3 className="text-xl font-semibold text-emerald-700 mb-2">{judul.trim()}</h3>}
-                      <p className="whitespace-pre-line text-base leading-8 text-slate-600">
+                    <div key={index} className="space-y-2">
+                      {judul && <h3 className="text-xl font-semibold text-emerald-700">{judul.trim()}</h3>}
+                      <p className="whitespace-pre-line text-base leading-relaxed text-slate-600">
                         {isi.join('###').trim()}
                       </p>
                     </div>
@@ -151,8 +160,16 @@ export default async function ProfilePage() {
               </div>
               
               <div className="mt-8 grid gap-4">
-                <InfoCard icon={Users} label="Total Penduduk" value=" Jiwa" />
-                <InfoCard icon={Ruler} label="Luas Wilayah" value=" km² (209 Ha)" />
+                <InfoCard 
+                  icon={Users} 
+                  label="Total Penduduk" 
+                  value={`${statUmum['Jumlah Penduduk'] || 0} Jiwa`} 
+                />
+                <InfoCard 
+                  icon={Ruler} 
+                  label="Luas Wilayah" 
+                  value={`${statUmum['Luas Wilayah'] || 0} Ha`} 
+                />
               </div>
             </div>
 

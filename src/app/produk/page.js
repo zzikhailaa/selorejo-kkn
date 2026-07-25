@@ -1,74 +1,59 @@
-'use client';
-
 import React from 'react';
-import { ShoppingBag, Phone, ExternalLink } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 
-const sampleProducts = [
-  {
-    id: 1,
-    name: 'Anyaman Tas Selorejo',
-    desc: 'Tas anyaman alami hasil karya tangan warga Selorejo.',
-    wa: 'https://wa.me/6281234567890',
-  },
-  {
-    id: 2,
-    name: 'Kacang Tanah Panggang',
-    desc: 'Kacang tanah panggang hasil olahan warga Selorejo, gurih dan lezat.',
-    wa: 'https://wa.me/6281987654321',
-  },
-  {
-    id: 3,
-    name: 'Jay Sangkar',
-    desc: 'Sangkar burung kayu alami hasil karya tangan warga Mojodadi.',
-    wa: 'https://wa.me/6281987654321',
-    ig: '',
-    yt: '',
-  },
-];
+async function getProduk() {
+  const res = await fetch('https://script.google.com/macros/s/AKfycbyHWyDemUVLgkDExoA3__K8bJLTop3fyL85xt9GABcFZGLZWG-u59reO5tiqvA0V886/exec', { 
+    cache: 'no-store' 
+  });
+  return res.json();
+}
 
-export default function ProdukPage() {
-  const formUrl = 'https://forms.gle/YOUR_GOOGLE_FORM_LINK'; // ganti dengan link Form nyata
+export default async function ProdukPage() {
+  const data = await getProduk();
 
   return (
     <div className="w-full bg-slate-50 flex flex-col items-center py-12">
       <div className="max-w-6xl w-full px-6">
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-emerald-700">Produk UMKM Selorejo</h1>
-            <p className="text-slate-600 mt-2">Kumpulan produk unggulan hasil karya warga Selorejo.</p>
-          </div>
-          <div>
-        </div>
-      </div>
+        <h1 className="text-3xl font-bold text-emerald-700">Produk UMKM Selorejo</h1>
+        
+        {data.umkm && data.umkm.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+            {data.umkm.map((product, index) => (
+              <article key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm border flex flex-col justify-between">
+                <div>
+                  {/* Kotak Foto Produk UMKM */}
+                  <div className="h-48 w-full bg-slate-100 relative overflow-hidden">
+                    {product.foto_url ? (
+                      <img 
+                        src={product.foto_url} 
+                        alt={product.nama_produk} 
+                        className="w-full h-full object-cover" 
+                      />
+                    ) : (
+                      <div className="h-full flex items-center justify-center text-emerald-600">
+                        <ShoppingBag className="w-12 h-12" />
+                      </div>
+                    )}
+                  </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {sampleProducts.slice(0,4).map(product => (
-            <article key={product.id} className="bg-white rounded-2xl overflow-hidden border-0 shadow-none ring-0 outline-none transform transition hover:shadow-none hover:-translate-y-1">
-              <div className="h-40 bg-slate-200 flex items-center justify-center text-emerald-600">
-                <ShoppingBag className="w-12 h-12" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-slate-900">{product.name}</h3>
-                <div className="text-sm text-emerald-600 font-semibold mt-2">{product.price}</div>
-                <p className="text-sm text-slate-500 mt-3">{product.desc}</p>
+                  <div className="p-4">
+                    <h3 className="font-semibold text-slate-900">{product.nama_produk}</h3>
+                    <div className="text-sm text-emerald-600 font-semibold mt-2">Rp {product.harga}</div>
+                    <p className="text-sm text-slate-500 mt-3 line-clamp-2">{product.deskripsi}</p>
+                  </div>
+                </div>
 
-                <div className="mt-4 flex gap-2">
-                  <a 
-                    href={`/produk/${product.id}`} 
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-full text-sm bg-white text-slate-700 hover:bg-slate-50 transition"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Detail
+                <div className="p-4 pt-0">
+                  <a href={`/produk/${product.id}`} className="inline-block text-emerald-700 font-bold hover:underline">
+                    Detail &rarr;
                   </a>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8 text-center text-sm text-slate-500">
-          <p>Data produk saat ini disimpan di Google Sheets — warga dapat menambahkan produk melalui Form setelah diverifikasi oleh pengembang.</p>
-        </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-8 text-slate-500">Data produk belum tersedia.</p>
+        )}
       </div>
     </div>
   );

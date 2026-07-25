@@ -1,27 +1,28 @@
-// src/app/wisata/page.js
+'use client';
+
+import { useState, useEffect } from 'react';
+import { getStatistikPenduduk } from '@/lib/api';
 
 export default function WisataPage() {
-  // Data Dummy agar halaman bisa langsung tampil
-  const daftarWisata = [
-    {
-      id: 1,
-      nama: "Wisata Alam Bukit Bongku",
-      deskripsi: "Negeri di atas awan, sebuah warna baru destinasi wisata yang berada di Sekadau, Kalimantan Barat. Kamu dapat menikmati keindahan alam dari ketinggian.",
-      gambar: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 2,
-      nama: "Siling Kanu",
-      deskripsi: "Siling Kanu adalah salah satu tempat wisata alam yang terletak di Dusun Lubang Landak. Menawarkan pemandangan air terjun yang masih sangat asri.",
-      gambar: "https://images.unsplash.com/photo-1437422061949-fd65b8979313?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: 3,
-      nama: "Wisata Embung Selorejo",
-      deskripsi: "Tempat bersantai yang dikelilingi oleh area pertanian warga dengan udara yang sejuk dan pemandangan matahari terbenam yang memukau.",
-      gambar: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80"
+  const [daftarWisata, setDaftarWisata] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchWisata() {
+      try {
+        const data = await getStatistikPenduduk();
+        if (data && data.wisata && Array.isArray(data.wisata)) {
+          setDaftarWisata(data.wisata);
+        }
+      } catch (error) {
+        console.error("Gagal mengambil data wisata:", error);
+      } finally {
+        setLoading(false);
+      }
     }
-  ];
+
+    fetchWisata();
+  }, []);
 
   return (
     <div className="bg-slate-50 min-h-screen pt-28 pb-16 px-6">
@@ -38,28 +39,30 @@ export default function WisataPage() {
 
         {/* Grid List */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {daftarWisata.map((wisata) => (
-            <div 
-              key={wisata.id} 
-              className="bg-white rounded-[2rem] overflow-hidden flex flex-col border-0 shadow-none ring-0 outline-none transition duration-300 hover:shadow-none"
-            >
-              <div className="h-60 w-full overflow-hidden bg-slate-100">
-                <img src={wisata.gambar} alt={wisata.nama} className="w-full h-full object-cover" />
-              </div>
-              <div className="p-6 flex-grow flex flex-col">
-                <h3 className="text-xl font-bold text-slate-900 mb-3 uppercase">{wisata.nama}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed flex-grow">{wisata.deskripsi}</p>
-                <div className="mt-6">
-                  <a 
-                    href={`/wisata/${wisata.id}`} 
-                    className="block w-full py-3 text-center bg-emerald-500 text-white font-bold text-sm rounded-2xl hover:bg-emerald-600 transition"
-                  >
-                    Selengkapnya
-                  </a>
+          {loading ? (
+            <div className="col-span-full text-center py-12 text-slate-400">
+              Memuat data wisata...
+            </div>
+          ) : daftarWisata.length > 0 ? (
+            daftarWisata.map((wisata) => (
+              <div 
+                key={wisata.id} 
+                className="bg-white rounded-[2rem] overflow-hidden flex flex-col border shadow-sm transition duration-300 hover:shadow-lg"
+              >
+                <div className="h-60 w-full overflow-hidden bg-slate-100">
+                  <img src={wisata.foto_url} alt={wisata.nama} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-6 flex-grow flex flex-col">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 uppercase">{wisata.nama}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed flex-grow">{wisata.deskripsi}</p>
                 </div>
               </div>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12 text-slate-400">
+              Belum ada data wisata di Google Sheets.
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>

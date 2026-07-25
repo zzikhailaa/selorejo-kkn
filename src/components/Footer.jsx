@@ -31,31 +31,43 @@ export default function Footer({ kontak }) {
         </div>
         </div>
 
-        {/* Kolom 3: Link Penting (Paten) */}
-        <div>
-          <h3 className="font-bold text-lg mb-2">Link Terkait</h3>
-          <ul className="text-sm space-y-1">
-            <li>
-              <a href="https://mojowarno.jombangkab.go.id/" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                Portal Kecamatan Mojowarno
-              </a>
-            </li>
-            <li>
-              <a href="https://maps.app.goo.gl/PhLftzk3X9Nhoq4K9" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                Peta Lokasi Balai Desa
-              </a>
-            </li>
-            <li>
-              <a href="https://www.jombangkab.go.id/" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                Website Resmi Kabupaten Jombang
-              </a>
-            </li>
-          </ul>
-        </div>
+       {/* Kolom 3: Link Penting (Paten) */}
+          <div>
+            <h3 className="font-bold text-lg mb-2">Link Terkait</h3>
+            <ul className="text-sm space-y-1">
+              <li>
+                <a href="https://mojowarno.jombangkab.go.id/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  Portal Kecamatan Mojowarno
+                </a>
+              </li>
+              <li>
+                <a href="https://maps.app.goo.gl/PhLftzk3X9Nhoq4K9" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  Peta Lokasi Balai Desa
+                </a>
+              </li>
+              <li>
+                <a href="https://www.jombangkab.go.id/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  Website Resmi Kabupaten Jombang
+                </a>
+              </li>
+              {/* Tambahan Link Sabdopalon Jombang */}
+              <li>
+                <a href="https://sabdopalon.jombangkab.go.id/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  Sabdopalon Jombang
+                </a>
+              </li>
+              {/* Jika link PBB Bapenda sebelumnya juga ingin ditaruh di sini */}
+              <li>
+                <a href="https://share.google/L7s3zUOJbu8GhOIUQ" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  Cek PBB Bapenda Jombang
+                </a>
+              </li>
+            </ul>
+          </div>
       </div>
       
       <div className="text-center mt-6 text-xs border-t border-gray-700 pt-4">
-        &copy; {new Date().getFullYear()} KKN Desa Selorejo. All rights reserved.
+        &copy; {new Date().getFullYear()} KKN Kelompok 16 UPN Veteran Jawa Timur. All rights reserved.
       </div>
     </footer>
   );
