@@ -32,6 +32,55 @@ const slides = [
   }
 ];
 
+export default function Page() {
+  return (
+    <main className="w-full">
+      {/* 3. Taruh blok div carousel di dalam fungsi halaman utama ini */}
+      <div className="relative h-[500px] w-full overflow-hidden hero-carousel">
+        {/* Radio Buttons untuk mengontrol slide */}
+        <input type="radio" name="hero-slider" id="hero-slide-0" defaultChecked className="hero-radio" />
+        <input type="radio" name="hero-slider" id="hero-slide-1" className="hero-radio" />
+        <input type="radio" name="hero-slider" id="hero-slide-2" className="hero-radio" />
+        <input type="radio" name="hero-slider" id="hero-slide-3" className="hero-radio" />
+
+        {/* Viewport pembungkus slide */}
+        <div className="hero-viewport">
+          {slides.map((slide, index) => (
+            <div key={index} className={`hero-slide hero-slide-${index}`}>
+              <img src={slide.image} alt={slide.title} className="hero-image" />
+              
+              {/* Lapisan Gelap / Overlay */}
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <div className="text-center px-4 max-w-3xl mx-auto">
+                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg mb-3 leading-tight">
+                    {slide.title}
+                  </h1>
+                  <p className="text-sm sm:text-base md:text-lg text-slate-100 drop-shadow-md mb-6 max-w-2xl mx-auto">
+                    {slide.desc}
+                  </p>
+                  {slide.buttonText && (
+                    <a href={slide.link} className="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition duration-300">
+                      {slide.buttonText}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Titik Indikator (Dots) di bawah */}
+        <div className="absolute bottom-6 left-0 right-0 z-30 flex justify-center gap-2">
+          <label htmlFor="hero-slide-0" className="hero-dot"></label>
+          <label htmlFor="hero-slide-1" className="hero-dot"></label>
+          <label htmlFor="hero-slide-2" className="hero-dot"></label>
+          <label htmlFor="hero-slide-3" className="hero-dot"></label>
+        </div>
+      </div>
+    </main>
+  );
+}
+
 export default function Home() {
   // State untuk menyimpan data statistik penduduk & status loading
   const [adminStats, setAdminStats] = useState([
