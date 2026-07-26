@@ -1,4 +1,3 @@
-
 import { Mail, Phone } from 'lucide-react';
 export default function Footer({ kontak }) {
   return (
@@ -50,13 +49,11 @@ export default function Footer({ kontak }) {
                   Website Resmi Kabupaten Jombang
                 </a>
               </li>
-              {/* Tambahan Link Sabdopalon Jombang */}
               <li>
                 <a href="https://sabdopalon.jombangkab.go.id/" target="_blank" rel="noopener noreferrer" className="hover:underline">
                   Sabdopalon Jombang
                 </a>
               </li>
-              {/* Jika link PBB Bapenda sebelumnya juga ingin ditaruh di sini */}
               <li>
                 <a href="https://share.google/L7s3zUOJbu8GhOIUQ" target="_blank" rel="noopener noreferrer" className="hover:underline">
                   Cek PBB Bapenda Jombang
@@ -65,23 +62,18 @@ export default function Footer({ kontak }) {
             </ul>
           </div>
       </div>
-
-      {/* Bagian Bawah Footer dengan Logo & Hak Cipta */}
-      {/* Garis Pembatas & Bagian Bawah */}
-      <div className="mt-8 pt-6 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 gap-4">
-        
-        {/* Logo UPN & KKN (Opsional, pastikan file gambar sudah ada di folder public atau hapus tag img jika belum ada) */}
+      
+      {/* Bagian Bawah Footer dengan Logo & Hak Cipta Tunggal */}
+      <div className="container mx-auto mt-8 pt-6 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 gap-4">
         <div className="flex items-center gap-3">
           <img src="/logo-upn.png" alt="Logo UPN" className="h-8 w-auto object-contain" />
           <img src="/logo-kkn.png" alt="Logo KKN" className="h-8 w-auto object-contain" />
           <span>KKN Kelompok 16 UPN Veteran Jawa Timur</span>
         </div>
 
-        {/* Hak Cipta Tunggal */}
         <div className="text-center md:text-right">
           &copy; {new Date().getFullYear()} Desa Selorejo. All rights reserved.
         </div>
-
       </div>
     </footer>
   );
