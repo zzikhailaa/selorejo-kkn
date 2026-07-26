@@ -67,16 +67,19 @@ export default function Footer({ kontak }) {
       </div>
 
       {/* Bagian Bawah Footer dengan Logo & Hak Cipta */}
-      <div className="flex flex-col md:flex-row items-center justify-between mt-8 text-xs border-t border-gray-700 pt-6 gap-4">
+      {/* Garis Pembatas & Bagian Bawah */}
+      <div className="mt-8 pt-6 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 gap-4">
         
-        {/* Logo Kiri / Kanan (Opsional) */}
+        {/* Logo UPN & KKN (Opsional, pastikan file gambar sudah ada di folder public atau hapus tag img jika belum ada) */}
         <div className="flex items-center gap-3">
           <img src="/logo-upn.png" alt="Logo UPN" className="h-8 w-auto object-contain" />
           <img src="/logo-kkn.png" alt="Logo KKN" className="h-8 w-auto object-contain" />
+          <span>KKN Kelompok 16 UPN Veteran Jawa Timur</span>
         </div>
 
-        <div className="text-center text-gray-400">
-          &copy; {new Date().getFullYear()} Desa Selorejo & KKN Kelompok 16 UPN Veteran Jawa Timur. All rights reserved.
+        {/* Hak Cipta Tunggal */}
+        <div className="text-center md:text-right">
+          &copy; {new Date().getFullYear()} Desa Selorejo. All rights reserved.
         </div>
 
       </div>

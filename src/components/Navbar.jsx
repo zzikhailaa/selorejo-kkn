@@ -27,7 +27,6 @@ export default function Navbar() {
     { name: "Produk", href: "/produk" },
     { name: "Berita", href: "/berita" },
     { name: "Infografis", href: "/infografis" },
-    { name: "Tentang Pengembang", href: "/kkn" },
   ];
 
   return (
