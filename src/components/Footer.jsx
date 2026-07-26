@@ -83,10 +83,6 @@ export default function Footer({ kontak }) {
         </div>
 
       </div>
-      
-      <div className="text-center mt-6 text-xs border-t border-gray-700 pt-4">
-        &copy; {new Date().getFullYear()} KKN Kelompok 16 UPN Veteran Jawa Timur. All rights reserved.
-      </div>
     </footer>
   );
 }
